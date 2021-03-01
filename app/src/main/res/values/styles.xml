@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="setupTeamName" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="teamName" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/grey</item>
         <item name="android:textSize">30sp</item>

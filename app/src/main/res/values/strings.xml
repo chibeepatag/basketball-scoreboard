@@ -1,4 +1,7 @@
 <resources>
+    <string name="setup_team_A_label">Team A</string>
+    <string name="setup_team_B_label">Team B</string>
+    <string name="setup_start_btn">Start</string>
     <string name="app_name">Basketball Scoreboard</string>
     <string name="team_a_name">Toronto Raptors</string>
     <string name="team_b_name">Charlotte Hornets</string>
@@ -6,4 +9,6 @@
     <string name="points_2_label">+2 Points</string>
     <string name="free_throw_label">Free Throw</string>
     <string name="reset">Reset</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
