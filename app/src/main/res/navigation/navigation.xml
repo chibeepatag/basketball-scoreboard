@@ -9,10 +9,24 @@
         android:label="SetupFragment" >
         <action
             android:id="@+id/action_setupFragment_to_scoreboardFragment"
-            app:destination="@id/scoreboardFragment" />
+            app:destination="@id/scoreboardFragment" >
+            <argument
+                android:name="teamAName"
+                android:defaultValue="Charlotte Hornets" />
+            <argument
+                android:name="teamBName"
+                android:defaultValue="Toronto Raptors" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/scoreboardFragment"
         android:name="com.chibee.scoreboard.ScoreboardFragment"
-        android:label="ScoreboardFragment" />
+        android:label="ScoreboardFragment" >
+        <argument
+            android:name="teamAName"
+            app:argType="string" />
+        <argument
+            android:name="teamBName"
+            app:argType="string" />
+    </fragment>
 </navigation>

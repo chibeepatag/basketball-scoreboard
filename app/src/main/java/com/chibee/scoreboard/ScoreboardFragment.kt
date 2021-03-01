@@ -1,6 +1,7 @@
 package com.chibee.scoreboard
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,10 @@ class ScoreboardFragment : Fragment() {
         binding.setLifecycleOwner(this)
         viewModel =  ViewModelProvider(this).get(ScoreViewModel::class.java)
         binding.scoreViewModel = viewModel
-        // Inflate the layout for this fragment
+        Log.i("Scoreboard Arguments", arguments.toString())
+        var args = ScoreboardFragmentArgs.fromBundle(requireArguments())
+        binding.teamALabel.setText(args.teamAName)
+        binding.teamBLabel.setText(args.teamBName)
         return binding.root
     }
 
