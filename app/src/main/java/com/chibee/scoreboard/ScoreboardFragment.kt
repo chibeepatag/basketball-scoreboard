@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.chibee.scoreboard.databinding.ScoreboardFragmentBinding
 
 /**
@@ -30,10 +31,14 @@ class ScoreboardFragment : Fragment() {
         binding.setLifecycleOwner(this)
         viewModel =  ViewModelProvider(this).get(ScoreViewModel::class.java)
         binding.scoreViewModel = viewModel
-        Log.i("Scoreboard Arguments", arguments.toString())
+
         var args = ScoreboardFragmentArgs.fromBundle(requireArguments())
         binding.teamALabel.setText(args.teamAName)
         binding.teamBLabel.setText(args.teamBName)
+
+        binding.end.setOnClickListener{
+            requireView().findNavController().navigate(R.id.action_scoreboardFragment_to_gameHistoryFragment)
+        }
         return binding.root
     }
 

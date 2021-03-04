@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
     app:startDestination="@id/setupFragment">
 
     <fragment
@@ -28,5 +30,14 @@
         <argument
             android:name="teamBName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_scoreboardFragment_to_gameHistoryFragment"
+            app:destination="@id/gameHistoryFragment"
+            app:popUpTo="@id/setupFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameHistoryFragment"
+        android:name="com.chibee.scoreboard.GameHistoryFragment"
+        android:label="fragment_game_history"
+        tools:layout="@layout/fragment_game_history" />
 </navigation>
