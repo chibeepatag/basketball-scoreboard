@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.chibee.scoreboard.databinding.ScoreboardFragmentBinding
+import database.GameDatabase
+import database.GameDatabaseDao
 
 /**
  * A simple [Fragment] subclass.
@@ -28,17 +31,23 @@ class ScoreboardFragment : Fragment() {
             container,
             false
         )
-        binding.setLifecycleOwner(this)
-        viewModel =  ViewModelProvider(this).get(ScoreViewModel::class.java)
-        binding.scoreViewModel = viewModel
-
+        val application = requireNotNull(this.activity).application
+        val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
         var args = ScoreboardFragmentArgs.fromBundle(requireArguments())
         binding.teamALabel.setText(args.teamAName)
         binding.teamBLabel.setText(args.teamBName)
+        val scoreViewModelFactory = ScoreViewModelFactory(dataSource, application, args.teamAName, args.teamBName)
+        viewModel =  ViewModelProvider(this, scoreViewModelFactory).get(ScoreViewModel::class.java)
+        binding.setLifecycleOwner(this)
 
-        binding.end.setOnClickListener{
-            requireView().findNavController().navigate(R.id.action_scoreboardFragment_to_gameHistoryFragment)
-        }
+        binding.scoreViewModel = viewModel
+
+        viewModel.navigateToGameHistory.observe(viewLifecycleOwner, Observer {navigate ->
+            if(navigate){
+                requireView().findNavController().navigate(R.id.action_scoreboardFragment_to_gameHistoryFragment)
+                viewModel.doneNavigating()
+            }
+        })
         return binding.root
     }
 
