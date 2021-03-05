@@ -14,11 +14,9 @@ class ScoreViewModel(val database: GameDatabaseDao, application: Application, va
     private val _teamAScore = MutableLiveData<Int>()
     val teamAScore: LiveData<Int>
         get() = _teamAScore
-
     private val _teamBScore = MutableLiveData<Int>()
     val teamBScore: LiveData<Int>
         get() = _teamBScore
-
     private val _navigateToGameHistory = MutableLiveData<Boolean>()
     val navigateToGameHistory: LiveData<Boolean>
         get() = _navigateToGameHistory

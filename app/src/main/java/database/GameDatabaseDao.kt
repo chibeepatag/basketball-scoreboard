@@ -22,7 +22,7 @@ interface GameDatabaseDao {
     fun clear()
 
     @Query("SELECT * from game ORDER BY gameId DESC")
-    fun getAllNights(): LiveData<List<Game>>
+    fun getAllGames(): LiveData<List<Game>>
 
     @Query("DELETE from game where gameId = :key")
     fun delete(key: Long)
