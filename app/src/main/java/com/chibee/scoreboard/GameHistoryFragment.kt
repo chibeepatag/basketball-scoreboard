@@ -36,7 +36,7 @@ class GameHistoryFragment : Fragment() {
         val dataSource = GameDatabase.getInstance(application).gameDatabaseDao
         val gameHistoryViewModelFactory = GameHistoryViewModelFactory(dataSource, application)
         viewModel = ViewModelProvider(this, gameHistoryViewModelFactory).get(GameHistoryViewModel::class.java)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         binding.gameHistoryViewModel = viewModel
 
         viewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
@@ -48,6 +48,11 @@ class GameHistoryFragment : Fragment() {
                 ).show()
                 viewModel.doneShowingSnackbar()
             }
+        })
+        val adapter = GameHistoryAdapter()
+        binding.gameHistList.adapter = adapter
+        viewModel.games.observe(viewLifecycleOwner, Observer {
+            adapter.data = it
         })
         return binding.root
     }

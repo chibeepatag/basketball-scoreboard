@@ -11,7 +11,7 @@ import kotlinx.coroutines.*
 class GameHistoryViewModel(val database: GameDatabaseDao, application: Application) : AndroidViewModel(application) {
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
-    private val games = database.getAllGames()
+    val games = database.getAllGames()
 
     val gamesString = Transformations.map(games) { game ->
         game.size.toString()

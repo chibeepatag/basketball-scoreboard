@@ -3,6 +3,7 @@ package database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.text.SimpleDateFormat
 
 @Entity
 data class Game (
@@ -18,4 +19,10 @@ data class Game (
     val teamBScore: Int,
     @ColumnInfo(name = "game_date")
     var gameDate: Long = System.currentTimeMillis()
-)
+){
+    fun gameDateString(): String{
+        val sdf = SimpleDateFormat("d MMM yyyy HH:mm")
+        val formattedDate = sdf.format(gameDate).toString()
+        return formattedDate
+    }
+}
