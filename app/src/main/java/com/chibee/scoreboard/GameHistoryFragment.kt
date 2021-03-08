@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.chibee.scoreboard.databinding.FragmentGameHistoryBinding
-import com.chibee.scoreboard.databinding.ScoreboardFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import database.GameDatabase
 
@@ -52,7 +51,7 @@ class GameHistoryFragment : Fragment() {
         val adapter = GameHistoryAdapter()
         binding.gameHistList.adapter = adapter
         viewModel.games.observe(viewLifecycleOwner, Observer {
-            adapter.data = it
+            adapter.submitList(it)
         })
         return binding.root
     }

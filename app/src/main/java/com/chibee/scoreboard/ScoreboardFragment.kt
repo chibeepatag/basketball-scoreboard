@@ -1,7 +1,6 @@
 package com.chibee.scoreboard
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.chibee.scoreboard.databinding.ScoreboardFragmentBinding
 import database.GameDatabase
-import database.GameDatabaseDao
 
 /**
  * A simple [Fragment] subclass.

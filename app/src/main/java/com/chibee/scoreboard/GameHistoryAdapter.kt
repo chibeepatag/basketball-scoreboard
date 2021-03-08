@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import database.Game
 
-class GameHistoryAdapter: RecyclerView.Adapter<GameHistoryAdapter.GameViewHolder>(){
+class GameHistoryAdapter: ListAdapter<Game, GameHistoryAdapter.GameViewHolder>(GameDiffCallback()){
     class GameViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val gameDateTextView: TextView
         val teamANameTextView: TextView
@@ -38,22 +40,24 @@ class GameHistoryAdapter: RecyclerView.Adapter<GameHistoryAdapter.GameViewHolder
             }
         }
     }
-    var data = listOf<Game>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         return GameViewHolder.from(parent)
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
+}
 
+class GameDiffCallback : DiffUtil.ItemCallback<Game>() {
+    override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
+        return oldItem.gameId == newItem.gameId
+    }
+
+
+    override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
+        return oldItem == newItem
+    }
 }
