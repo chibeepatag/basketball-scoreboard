@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="gameHistoryViewModel"
+            name="game"
             type="com.chibee.scoreboard.database.Game"/>
     </data>
 
@@ -25,6 +25,7 @@
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:gameDate="@{game}"
             tools:text="5 March 20201 13:15:00" />
 
         <TextView
@@ -36,6 +37,7 @@
             app:layout_constraintEnd_toStartOf="@+id/game_hist_team_A_score"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/game_hist_game_date"
+            app:teamAName="@{game}"
             tools:text="Toronto Raptors" />
 
         <TextView
@@ -47,6 +49,7 @@
             app:layout_constraintEnd_toStartOf="@+id/game_hist_team_B_name"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/game_hist_team_A_name"
+            app:teamAScore="@{game}"
             tools:text="98" />
 
         <TextView
@@ -58,6 +61,7 @@
             app:layout_constraintEnd_toStartOf="@+id/game_hist_team_B_score"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/game_hist_team_A_score"
+            app:teamBName="@{game}"
             tools:text="Chicago Bulls" />
 
         <TextView
@@ -69,6 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/game_hist_team_B_name"
+            app:teamBScore="@{game}"
             tools:text="93" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
