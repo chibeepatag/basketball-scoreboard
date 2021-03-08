@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.chibee.scoreboard.databinding.FragmentGameHistoryBinding
 import com.google.android.material.snackbar.Snackbar
-import database.GameDatabase
+import com.chibee.scoreboard.database.GameDatabase
 
 /**
  * A simple [Fragment] subclass.

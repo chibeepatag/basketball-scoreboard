@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import database.Game
-import database.GameDatabaseDao
+import com.chibee.scoreboard.database.Game
+import com.chibee.scoreboard.database.GameDatabaseDao
 import kotlinx.coroutines.*
 
 class ScoreViewModel(val database: GameDatabaseDao, application: Application, val teamAName: String, val teamBName: String) : AndroidViewModel(application) {

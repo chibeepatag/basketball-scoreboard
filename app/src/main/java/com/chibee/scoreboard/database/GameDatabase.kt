@@ -1,4 +1,4 @@
-package database
+package com.chibee.scoreboard.database
 
 import android.content.Context
 import androidx.room.Database
@@ -15,7 +15,8 @@ abstract class GameDatabase : RoomDatabase(){
 
         fun getInstance(context: Context) : GameDatabase {
             synchronized(this){
-                var instance = INSTANCE
+                var instance =
+                    INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,

@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import database.GameDatabaseDao
+import com.chibee.scoreboard.database.GameDatabaseDao
 import kotlinx.coroutines.*
 
 class GameHistoryViewModel(val database: GameDatabaseDao, application: Application) : AndroidViewModel(application) {

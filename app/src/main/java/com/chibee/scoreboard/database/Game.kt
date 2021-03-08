@@ -1,4 +1,4 @@
-package database
+package com.chibee.scoreboard.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

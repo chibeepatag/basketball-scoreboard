@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.chibee.scoreboard.databinding.ScoreboardFragmentBinding
-import database.GameDatabase
+import com.chibee.scoreboard.database.GameDatabase
 
 /**
  * A simple [Fragment] subclass.

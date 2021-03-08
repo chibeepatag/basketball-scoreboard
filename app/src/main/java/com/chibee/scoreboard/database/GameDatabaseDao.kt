@@ -1,4 +1,4 @@
-package database
+package com.chibee.scoreboard.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
