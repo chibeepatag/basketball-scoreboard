@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chibee.scoreboard.database.Game
 import com.chibee.scoreboard.databinding.GameRowBinding
 
-class GameHistoryAdapter: ListAdapter<Game, GameHistoryAdapter.GameViewHolder>(GameDiffCallback()){
+class GameHistoryAdapter(val clickListener: GameListener): ListAdapter<Game, GameHistoryAdapter.GameViewHolder>(GameDiffCallback()){
     class GameViewHolder private constructor(val binding: GameRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Game){
+        fun bind(item: Game, listener: GameListener){
             binding.game = item
+            binding.clickListener = listener
             binding.executePendingBindings()
         }
 
@@ -33,7 +34,7 @@ class GameHistoryAdapter: ListAdapter<Game, GameHistoryAdapter.GameViewHolder>(G
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 }
 
@@ -46,4 +47,8 @@ class GameDiffCallback : DiffUtil.ItemCallback<Game>() {
     override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
         return oldItem == newItem
     }
+}
+
+class GameListener(val clickListener: (id: Long) -> Unit) {
+    fun onClick(game: Game) = clickListener(game.gameId)
 }

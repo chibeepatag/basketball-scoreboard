@@ -39,5 +39,17 @@
         android:id="@+id/gameHistoryFragment"
         android:name="com.chibee.scoreboard.GameHistoryFragment"
         android:label="fragment_game_history"
-        tools:layout="@layout/fragment_game_history" />
+        tools:layout="@layout/fragment_game_history" >
+        <action
+            android:id="@+id/action_gameHistoryFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.chibee.scoreboard.GameFragment"
+        android:label="GameFragment" >
+        <argument
+            android:name="gameId"
+            app:argType="long" />
+    </fragment>
 </navigation>

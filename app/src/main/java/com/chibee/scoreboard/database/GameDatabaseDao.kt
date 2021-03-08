@@ -18,6 +18,9 @@ interface GameDatabaseDao {
     @Query("SELECT * from game WHERE gameId = :key")
     fun get(key: Long): Game?
 
+    @Query("SELECT * from game WHERE gameId = :key")
+    fun getGameWithId(key: Long): LiveData<Game>
+
     @Query("DELETE from game")
     fun clear()
 

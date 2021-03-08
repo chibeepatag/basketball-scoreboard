@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.chibee.scoreboard.databinding.FragmentGameHistoryBinding
 import com.google.android.material.snackbar.Snackbar
 import com.chibee.scoreboard.database.GameDatabase
@@ -48,7 +49,10 @@ class GameHistoryFragment : Fragment() {
                 viewModel.doneShowingSnackbar()
             }
         })
-        val adapter = GameHistoryAdapter()
+        val adapter = GameHistoryAdapter(GameListener { id ->
+            val toGame = GameHistoryFragmentDirections.actionGameHistoryFragmentToGameFragment(id)
+            findNavController().navigate(toGame)
+        })
         binding.gameHistList.adapter = adapter
         viewModel.games.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
